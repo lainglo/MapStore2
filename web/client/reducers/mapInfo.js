@@ -27,7 +27,7 @@ const {RESET_CONTROLS} = require('../actions/controls');
 
 const assign = require('object-assign');
 const {head} = require('lodash');
-const {inside} = require('turf');
+const inside = require('turf/node_modules/turf-inside');
 
 function receiveResponse(state, action, type) {
     const request = head((state.requests || []).filter((req) => req.reqId === action.reqId));
