@@ -16,6 +16,8 @@ const MAP_INFO_LOAD_START = 'MAP_INFO_LOAD_START';
 const MAP_INFO_LOADED = 'MAP_INFO_LOADED';
 const MAP_INFO_LOAD_ERROR = 'MAP_INFO_LOAD_ERROR';
 
+const assign = require('object-assign');
+
 function configureMap(conf, mapId) {
     return {
         type: MAP_CONFIG_LOADED,
@@ -37,7 +39,7 @@ function loadMapConfig(configName, mapId, permalinkObj) {
         return axios.get(configName).then((response) => {
             if (typeof response.data === 'object') {
                 if (permalinkObj) {
-                    ConfigUtils.setPermalinkLayersVisibility(response.data.map.layers, permalinkObj.permalinkLayers.layers);
+                    response.data.map.layers = ConfigUtils.setPermalinkLayersVisibility(response.data.map.layers, permalinkObj.permalinkLayers.layers);
                     assign(response.data.map, permalinkObj.permalinkExtent);
                 }
                 dispatch(configureMap(response.data, mapId));

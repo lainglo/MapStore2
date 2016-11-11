@@ -328,7 +328,7 @@ var ConfigUtils = {
     },
     setPermalinkLayersVisibility: function(originalLayers, newLayers) {
         return originalLayers.map((originalLayer) => {
-            return assign({}, originalLayer, {visibility: newLayers.filter((layer) => originalLayer.id === layer).length > 0 ? true : false});
+            return assign({}, originalLayer, {visibility: newLayers.filter((layer) => originalLayer.internalId === layer).length > 0 ? true : false});
         });
     }
 };
