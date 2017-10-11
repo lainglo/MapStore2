@@ -121,15 +121,15 @@ class MetadataExplorerComponent extends React.Component {
         const panel = <Catalog zoomToLayer={this.props.zoomToLayer} searchOnStartup={this.props.searchOnStartup} active={this.props.active} {...this.props}/>;
         const panelHeader = (<span><Glyphicon glyph="folder-open"/> <span className="metadataexplorer-panel-title"><Message msgId="catalog.title"/></span><span className="shapefile-panel-close panel-close" onClick={ toggleControl.bind(null, 'styler', null)}></span><button onClick={this.props.toggleControl} className="catalog-close close">{this.props.closeGlyph ? <Glyphicon glyph={this.props.closeGlyph} /> : <span>×</span>}</button></span>);
         return this.props.active ? (
-            <ContainerDimensions>
-            { ({ width }) =>
-                <Dock {...this.props.dockProps} isVisible={this.props.active} size={this.props.width / width > 1 ? 1 : this.props.width / width} >
+            <div>
+
+                <Dock {...this.props.dockProps} isVisible={this.props.active} size={ 3 / 8 } >
                     <Panel id={this.props.id} header={panelHeader}
                         style={this.props.panelStyle} className={this.props.panelClassName}>
                             {panel}
                         </Panel>
-                </Dock>}
-            </ContainerDimensions>
+                </Dock>
+            </div>
         ) : null;
     }
 }
