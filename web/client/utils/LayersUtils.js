@@ -303,7 +303,7 @@ const LayersUtils = {
         if (urlParts.length === 2) {
             let layerParts = layer.name.split(":");
             if (layerParts.length === 2) {
-                reqUrl = urlParts[0] + "/geoserver/" + layerParts [0] + "/" + layerParts[1] + "/" + urlParts[1];
+                reqUrl = urlParts[0] + "/geoserver/" + urlParts[1];
             }
         }
         return addBaseParams(reqUrl, layer.baseParams || {});
